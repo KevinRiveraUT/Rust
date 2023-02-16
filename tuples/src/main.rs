@@ -1,3 +1,9 @@
+use std::fmt; // Import `fmt`
+
+// The following struct is for the activity.
+#[derive(Debug)]
+struct Matrix(f32, f32, f32, f32);
+
 // Tuples can be used as function arguments and as return values
 fn reverse(pair: (i32, bool)) -> (bool, i32) {
     // `let` can be used to bind the members of a tuple to variables
@@ -6,9 +12,18 @@ fn reverse(pair: (i32, bool)) -> (bool, i32) {
     (bool_param, int_param)
 }
 
-// The following struct is for the activity.
-#[derive(Debug)]
-struct Matrix(f32, f32, f32, f32);
+//Takes a 2x2 matrix and swaps two elements
+fn transpose(matris: Matrix) -> Matrix{
+    return Matrix(matris.0, matris.2, matris.1, matris.3);
+}
+
+// Implement `Display` for `MinMax`.
+impl fmt::Display for Matrix {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        // Use `self.number` to refer to each positional data point.
+        write!(f, "( {}, {} )\n( {}, {} )", self.0, self.1, self.2, self.3)
+    }
+}
 
 fn main() {
     // A tuple with a bunch of different types
@@ -50,5 +65,10 @@ fn main() {
 
     let matrix = Matrix(1.1, 1.2, 2.1, 2.2);
     println!("{:?}", matrix);
+
+
+    // Activity
+    println!("Matrix:\n{}", matrix);
+    println!("Transpose:\n{}", transpose(matrix));
 
 }
