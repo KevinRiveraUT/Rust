@@ -1,3 +1,8 @@
+// An attribute to hide warnings for unused code.
+#![allow(dead_code)]
+#![allow(unused_variables)]
+#![allow(unused_assignments)]
+
 fn main() {
     // Variables can be type annotated.
     let logical: bool = true;

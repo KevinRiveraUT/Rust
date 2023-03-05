@@ -1,3 +1,6 @@
+// An attribute to hide warnings for unused code.
+#![allow(dead_code)]
+
 #[derive(Debug)]
 struct Person<'a> {
     name: &'a str,
