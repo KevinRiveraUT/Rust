@@ -74,11 +74,20 @@ fn main() {
     println!("pair contains {:?} and {:?}", integer, decimal);
 
     // Activity
+    // 1)
     let actual_rectangle = Rectangle {
         top_left: Point { x: 2.5, y: 5.11 },
         bottom_right: Point { x: 10.6, y: 1.04 }
     };
     rect_area(&actual_rectangle);
+
+    // 2)
+    let point4square: Point = Point { x: 5.0, y: 5.0 };
+    let size4square: f32 = 10.0;
+
+    let mynewsquare: Rectangle = square(&point4square, size4square);
+    println!("My new square is: Top Left: {:?}, {:?}. Bottom Right: {:?}, {:?}", 
+        mynewsquare.top_left.x, mynewsquare.top_left.y, mynewsquare.bottom_right.x, mynewsquare.bottom_right.y);
 }
 
 
@@ -107,6 +116,9 @@ fn rect_area(rect: &Rectangle) {
     println!("Area of rectangle in integer is: {:?}", another_pos_area);
 }
 
-fn square (pnt: &Point, size: f32){
-    
+fn square(pnt: &Point, size: f32) -> Rectangle{
+    return Rectangle { 
+        top_left: Point { x: pnt.x, y: pnt.y }, 
+        bottom_right: Point { x: pnt.x + size, y: pnt.y - size } 
+    };
 }
