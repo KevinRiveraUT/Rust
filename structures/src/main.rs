@@ -72,4 +72,41 @@ fn main() {
     let Pair(integer, decimal) = pair;
 
     println!("pair contains {:?} and {:?}", integer, decimal);
+
+    // Activity
+    let actual_rectangle = Rectangle {
+        top_left: Point { x: 2.5, y: 5.11 },
+        bottom_right: Point { x: 10.6, y: 1.04 }
+    };
+    rect_area(&actual_rectangle);
+}
+
+
+// Activity:
+//  Add a function rect_area which calculates the area of a Rectangle (try using nested destructuring).
+//  Add a function square which takes a Point and a f32 as arguments, and returns a Rectangle with its top left corner on the point, and a width and height corresponding to the f32.
+
+fn rect_area(rect: &Rectangle) {
+    // Get edges
+    let Point { x: rect_left_edge, y: rect_top_edge } = rect.top_left;
+    let Point { x: rect_right_edge, y: rect_bottom_edge } = rect.bottom_right;
+
+    // Calculate differences
+    let height: f32 = rect_top_edge - rect_bottom_edge;
+    let length: f32 = rect_left_edge - rect_right_edge;
+
+    // Calculate area and print
+    let rect_area: f32 = height * length;
+    // To display a positive number, first thing that came to mind.
+    let pos_area = f32::powf(rect_area, 2.0).sqrt();
+
+    // Didn't work as I expected, but leaving here for my reference
+    let another_pos_area: u32 = rect_area as u32;
+
+    println!("Area of rectangle is: {:?}", pos_area);
+    println!("Area of rectangle in integer is: {:?}", another_pos_area);
+}
+
+fn square (pnt: &Point, size: f32){
+    
 }
